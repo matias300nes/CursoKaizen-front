@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Alumnos</title>
+</head>
+
+<body>
+    <!--
+          1- id -> algo unico
+          2- class -> puedo tener varios elementos
+      -->
+
+
+    <p id="temp"></p>
+
+    <input type="checkbox" name="tema" id="chkTema">
+    <label for="chkTema">Tema oscuro</label>
+
+    <div class="contenedor">
+        <!--Formulario de alumnos-->
+
+        <div class="form" action="">
+            <!--Nombre-->
+            <div class="field">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="inputNombre">
+            </div>
+
+            <!--Apellido-->
+            <div class="field">
+                <label for="apellido">Apellido:</label>
+                <input type="text" name="apellido" id="inputApellido">
+            </div>
+
+            <!--Fecha nacimiento-->
+            <div class="field">
+                <label for="naciminento">Fecha de nacimiento:</label>
+                <input type="date" name="" id="inputFecha">
+            </div>
+
+            <!--Color favorito-->
+            <div class="field">
+                <label for="color">Color:</label>
+                <input type="color" name="color" id="inputColor">
+            </div>
+
+            <!--Email-->
+            <div class="field">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="inputEmail">
+            </div>
+
+            <!--submit-->
+
+            <div class="field">
+                <button id="btnSubmit" class="button">Agergar</button>
+            </div>
+
+        </div>
+
+        <!--Tabla del alumnos-->
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Color favorito</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="tableContent">
+
+            </tbody>
+        </table>
+    </div>
+
+    <!--llamo al JavaScript-->
+    <script src="app.js"></script>
+
+</body>
+
+</html>
