@@ -1,14 +1,13 @@
 //crear lista con personas
 personas = []
 
+var socket
+
 //traigo el componente boton
 const button = document.querySelector("#btnSubmit")
 
 //Creo un evento para el boton
-button.addEventListener('click', Agregar)
-
-//creo una funcion para el boton
-function Agregar(){
+button.addEventListener('click', () => {
     //traer informacion de formulario
     persona = {
         nombre : document.querySelector("#inputNombre").value,
@@ -17,6 +16,12 @@ function Agregar(){
         color : document.querySelector("#inputColor").value,
         email : document.querySelector("#inputEmail").value
     }
+
+    socket.emit("new", persona)
+})
+
+//creo una funcion para el boton
+function Agregar(persona){
 
     personas.push(persona)
 
@@ -72,6 +77,18 @@ fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/service
 .catch(err => {
   console.error(err);
 });
+
+window.onload = () => {
+    socket = io('http://localhost:3000/', {
+        withCredentials: false,
+    });
+
+    socket.on("recive new", data => {
+
+        console.log(data)
+        Agregar(data.item)
+    });
+}
 
 
 
