@@ -3,6 +3,12 @@ personas = []
 
 var socket
 
+//cada uno debe poner sus datos aqui
+const Me = {
+    nombre: "Matias",
+    apellido: "Endres"
+} 
+
 //traigo el componente boton
 const button = document.querySelector("#btnSubmit")
 
@@ -10,6 +16,7 @@ const button = document.querySelector("#btnSubmit")
 button.addEventListener('click', () => {
     //traer informacion de formulario
     persona = {
+        id : Date.now(),
         nombre : document.querySelector("#inputNombre").value,
         apellido : document.querySelector("#inputApellido").value,
         fecha : document.querySelector("#inputFecha").value,
@@ -17,7 +24,7 @@ button.addEventListener('click', () => {
         email : document.querySelector("#inputEmail").value
     }
 
-    socket.emit("new", persona)
+    socket.emit("new", persona, Me)
 })
 
 //creo una funcion para el boton
@@ -30,16 +37,26 @@ function Agregar(persona){
 
     //creo elemento fila
     var fila = document.createElement('tr')
+    
+    //id de fila
+    fila.id = persona.id
+
     fila.innerHTML = `
         <td>${persona.nombre}</td>
         <td>${persona.apellido}</td>
         <td>${persona.fecha}</td>
         <td style="background-color: ${persona.color};"></td>
         <td>${persona.email}</td>
+        <td><button class="btn btn-danger" onclick="Eliminar(${persona.id})">Eliminar</button></td>
     `
 
     tabla.appendChild(fila)
 }
+
+function Eliminar(id){
+    socket.emit("delete", id, Me)
+}
+
 
 //evento chkTema
 var checkbox = document.querySelector("#chkTema")
@@ -84,9 +101,14 @@ window.onload = () => {
     });
 
     socket.on("recive new", data => {
-
         console.log(data)
         Agregar(data.item)
+    });
+
+    socket.on("recive delete", data => {
+        console.log(data)
+        var fila = document.getElementById(data.itemID)
+        fila.remove()
     });
 }
 
