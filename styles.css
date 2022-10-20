@@ -9,12 +9,14 @@
   --primary-light: #cce3de;
   --light: #eaf4f4;
   --dark: #6b9080;
+  --background: #f6fff8;
   --white: #f6fff8;
+  --gray: #c7cfcf;
 }
 
 html {
   font-family: Montserrat, sans-serif;
-  background-color: var(--white);
+  background-color: var(--background);
   transition: all 0.5s;
 }
 
@@ -38,13 +40,13 @@ html {
   justify-content: space-evenly;
   height: 100%;
   margin: auto 30px;
-  min-width: 300px;
+  min-width: 20%;
   max-width: 400px;
   min-height: 600px;
   color: var(--dark);
   border-radius: 50px;
   background: var(--white);
-  box-shadow: 41px 41px 82px #c7cfcf, -41px -41px 82px #ffffff;
+  box-shadow: 41px 41px 82px var(--gray), -41px -41px 82px var(--white);
   padding: 2rem 2rem;
   transition: all 0.5s;
 }
@@ -55,13 +57,15 @@ html {
 }
 
 .field input {
+  color: var(--dark);
   font-family: Montserrat, sans-serif;
   margin-top: 0.5rem;
   height: 30px;
   border: 0px;
   border-radius: 50px;
   background: var(--light);
-  box-shadow: inset 41px 41px 82px var(--light), inset -41px -41px 82px #ffffff;
+  box-shadow: inset 41px 41px 82px var(--light),
+    inset -41px -41px 82px var(--white);
   padding: 0.5rem 1rem;
 }
 
@@ -82,7 +86,7 @@ input[type="color"]::-webkit-color-swatch-wrapper {
   outline: none;
   transition: all 0.5s;
   box-shadow: inset 41px 41px 82px var(--primary-light),
-    inset -41px -41px 82px #ffffff;
+    inset -41px -41px 82px var(--white);
 }
 
 .field button {
@@ -91,11 +95,12 @@ input[type="color"]::-webkit-color-swatch-wrapper {
   color: var(--dark);
   border-radius: 50px;
   background: var(--white);
-  box-shadow: 41px 41px 82px #c7cfcf, -41px -41px 82px #ffffff;
+  box-shadow: 41px 41px 82px var(--gray), -41px -41px 82px var(--white);
 }
 
 .button {
-  box-shadow: inset 41px 41px 82px var(--light), inset -41px -41px 82px #ffffff;
+  box-shadow: inset 41px 41px 82px var(--light),
+    inset -41px -41px 82px var(--white);
   transition: all 0.5s;
   cursor: pointer;
 }
@@ -106,17 +111,47 @@ input[type="color"]::-webkit-color-swatch-wrapper {
   transition: all 0.5s;
 }
 
-.tabla {
-  flex-grow: 2;
-  height: 100%;
-  min-width: 300px;
+.button-round {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 0px;
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+.delete {
+  background-color: var(--dark);
+  color: var(--light);
+  cursor: pointer;
+}
+
+.delete:hover {
+  background-color: var(--primary);
+  transition: all 0.5s;
+}
+
+.contenedor-tabla {
+  min-width: 65%;
   color: var(--dark);
   border: 0;
   border-radius: 50px;
   background: var(--white);
-  box-shadow: 41px 41px 82px #c7cfcf, -41px -41px 82px #ffffff;
+  box-shadow: 41px 41px 82px var(--gray), -41px -41px 82px var(--white);
   padding: 2rem 2rem;
   transition: all 0.5s;
+  max-height: max-content;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.tabla {
+  width: 100%;
+  max-height: max-content;
+  border-collapse: separate;
+  border-spacing: 0 15px;
 }
 
 /* acceso a cabecera */
@@ -125,29 +160,47 @@ input[type="color"]::-webkit-color-swatch-wrapper {
   color: var(--dark);
   border-radius: 50px;
   background: var(--white);
-  box-shadow: 41px 41px 82px #c7cfcf, -41px -41px 82px #ffffff;
+  box-shadow: 41px 41px 82px var(--gray), -41px -41px 82px var(--white);
   padding: 2rem 2rem;
   transition: all 0.5s;
+  height: 60px;
 }
 
 /* acceso a celdas */
 .tabla td {
-  height: 40px;
-  border: 1px solid var(--dark);
-  text-align: center;
-  background-color: var(--white);
+  border: 0;
+  color: var(--dark);
+  padding: 5px;
+}
+
+.tabla td:first-child {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.tabla td:last-child {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 
 .tabla th {
   padding: 1rem;
 }
 
-.tabla th:first-child{
+.tabla tr {
+  text-align: center;
+  background: var(--white);
+  box-shadow: 41px 41px 82px var(--gray), -41px -41px 82px var(--white);
+  transition: all 0.5s;
+  border-radius: 50px;
+}
+
+.tabla th:first-child {
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
 }
 
-.tabla th:last-child{
+.tabla th:last-child {
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
 }
