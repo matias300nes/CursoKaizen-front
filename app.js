@@ -27,6 +27,8 @@ formulario.addEventListener("submit", (e) => {
   };
 
   socket.emit("new", persona, Me);
+
+  formulario.reset();
 });
 
 //creo una funcion para el boton
