@@ -77,6 +77,7 @@ function cambiarTema() {
     root.style.setProperty("--background", "#3a3a3c");
     root.style.setProperty("--white", "#3a3a3c");
     root.style.setProperty("--gray", "#1c1c1e");
+    btnTema.innerHTML = `<i class="fa-solid fa-sun"></i>`;
   } else {
     //poner el tema claro
     root.style.setProperty("--primary", "#a4c3b2");
@@ -86,6 +87,7 @@ function cambiarTema() {
     root.style.setProperty("--background", "#f6fff8");
     root.style.setProperty("--white", "#f6fff8");
     root.style.setProperty("--gray", "#c7cfcf");
+    btnTema.innerHTML = `<i class="fa-solid fa-moon"></i>`;
   }
 }
 
